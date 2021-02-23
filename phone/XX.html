@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>controle 2</title>   
+    </head>
+    <body>
+        <form id="myForm" method="GET">
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" onblur="verifyName();">
+            </div>
+            <small id="nameErreurs"></small>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" onblur="verifyPassword();">
+            </div>
+            <small id="passwordErreurs"></small>
+            <div>
+                <label>Filier:</label>
+            </div>
+            <div>
+                <input id="tdi" type="radio" name="filier">TDI<br/>
+                <input id="tri" type="radio" name="filier">TRI<br/>
+                <input id="tmi" type="radio" name="filier">TMI<br/>
+            </div>
+            <div id="Ville">
+                <label>Ville:</label>
+                <select name="Ville" id="listV">
+                    <option value="0" disabled selected value>Selectionner</option>
+                    <option value="1">Beni Mellal</option>
+                    <option value="2">Fes</option>
+                    <option value="3">Rabat</option>
+                    <option value="4">Casa Blanca</option>
+                </select>
+            </div>
+            <small id="listErreurs"></small>
+            <div>
+                <input type="button" value="valide" onclick="verifyPassword(), verifyName(),verifyList();">
+                <input type="button" value="envoyer">
+            </div>
+        </form>
+    </body>
+    <script>
+        function verifyemail()
+            {
+                var n = document.getElementById("email").value;
+                var r = /^([a-zA-Z]+)(\s[a-zA-Z]+)?$/g;
+                if(r.test(n)==false)
+                {
+                    nameErreurs.style.color= "red";
+                    nameErreurs.style.marginLeft= "35px";
+                    nameErreurs.innerHTML="Email est obligatoire ne doit pas contenir de chiffre ou caractères spéciaux !!";
+                }
+                else
+                {
+                    nameErreurs.style.marginLeft= "0px";
+                    nameErreurs.innerHTML="";
+                }
+            }
+
+        function verifyPassword()
+            {
+                var p = document.getElementById("password").value;
+                var r = /^.+$/g;
+                if(r.test(p)==false)
+                {
+                    
+                    passwordErreurs.style.color= "red";
+                    passwordErreurs.style.marginLeft= "35px";
+                    passwordErreurs.innerHTML="Le password est obligatoire !!";
+                }
+                else
+                {
+                    passwordErreurs.style.marginLeft= "0px";
+                    passwordErreurs.innerHTML="";
+                }
+            }
+            function verifyList()
+                {
+                    if((document.getElementById("listV").getElementsByTagName("option")[0].selected == true))
+                    {
+                        listErreurs.style.color= "red";
+                        listErreurs.style.marginLeft= "35px";
+                        listErreurs.innerHTML="Tu dois sélectionner une ville !!";
+                    }
+                    else
+                    {
+                        listErreurs.style.marginLeft= "0px";
+                        listErreurs.innerHTML="";
+                    }
+}
+        
+    </script>
+</html>
